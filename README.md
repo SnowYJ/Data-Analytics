@@ -10,7 +10,7 @@
 * week9: 逻辑回归
 * week10: ...
 
-* term2_week1: Spark，HPC。
+* term2_week1: Spark。
 
 to be continue...
 
