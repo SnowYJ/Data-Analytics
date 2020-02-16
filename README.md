@@ -5,10 +5,10 @@
 * week4: 脊回归，基函数。
 * week5: 方差与偏差，交叉验证。
 * week6: 贝叶斯线性回归，pytorch。
-* week7: 
-* week8:
-* week9: 
-* week10:
+* week7: 降维，k-means，卷积神经网络。
+* week8: 朴素贝叶斯。
+* week9: 逻辑回归
+* week10: 
 
 to be continue...
 
