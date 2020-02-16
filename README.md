@@ -8,7 +8,9 @@
 * week7: 降维，k-means，卷积神经网络。
 * week8: 朴素贝叶斯。
 * week9: 逻辑回归
-* week10: 
+* week10: ...
+
+* term2_week1: Spark，HPC。
 
 to be continue...
 
@@ -19,6 +21,6 @@ to be continue...
 * IE: 信息提取
 * NLG: 自然语言生成
 
-* week1:
+* week1: 词向量。
 
 to be continue...
