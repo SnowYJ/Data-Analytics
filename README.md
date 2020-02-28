@@ -11,6 +11,7 @@
 * week10: ...
 
 * term2_week1: Spark。
+* term2_week3: 协同过滤。
 
 to be continue...
 
@@ -22,5 +23,7 @@ to be continue...
 * NLG: 自然语言生成
 
 * week1: 词向量。
+* week2: 二分类以及多分类逻辑回归。
+* week3: 马尔可夫，平滑。
 
 to be continue...
