@@ -12,6 +12,8 @@
 
 * term2_week1: Spark。
 * term2_week3: 协同过滤。
+* term2_week4: k-means, k-means++, k-means||
+* term2_week5: PCA
 
 to be continue...
 
@@ -25,5 +27,7 @@ to be continue...
 * week1: 词向量。
 * week2: 二分类以及多分类逻辑回归。
 * week3: 马尔可夫，平滑。
+* week4: 隐马尔可夫（维特比算法），条件随机场。
+* week5: 
 
 to be continue...
