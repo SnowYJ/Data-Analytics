@@ -29,5 +29,6 @@ to be continue...
 * week3: 马尔可夫，平滑。
 * week4: 隐马尔可夫（维特比算法），条件随机场。
 * week5: transition-based & graph-based dependency parsing 
+* week6: 前馈神经网络
 
 to be continue...
