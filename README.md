@@ -28,6 +28,6 @@ to be continue...
 * week2: 二分类以及多分类逻辑回归。
 * week3: 马尔可夫，平滑。
 * week4: 隐马尔可夫（维特比算法），条件随机场。
-* week5: 
+* week5: transition-based & graph-based dependency parsing 
 
 to be continue...
