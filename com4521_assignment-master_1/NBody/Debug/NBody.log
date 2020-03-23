@@ -1,44 +1,38 @@
 ﻿  NBody.c
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(81): warning C4133: '=': incompatible types - from 'vec *' to 'nbody *'
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(142): warning C4778: 'fscanf' : unterminated format string '%*'
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(147): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(150): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(161): warning C4090: 'function': different 'const' qualifiers
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(168): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(169): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(172): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(230): warning C4090: 'function': different 'const' qualifiers
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(133): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(140): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1197): note: see declaration of 'fscanf'
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(142): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1197): note: see declaration of 'fscanf'
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(202): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(250): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(251): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(282): warning C4090: 'function': different 'const' qualifiers
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(249): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(296): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(297): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(298): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(299): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(301): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(293): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(294): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(312): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(313): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(339): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(340): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(341): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(342): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(344): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(336): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(337): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(356): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(357): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(388): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(389): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(420): warning C4090: 'function': different 'const' qualifiers
-\\mac\home\desktop\com4521_assignment-master\nbody\nbody.c(387): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  NBody.vcxproj -> \\Mac\Home\Desktop\com4521_assignment-master\Debug\NBody.exe
+C:\Users\yingji\Desktop\com4521_assignment-master_1\NBody\NBody.c(78,66): warning C4133: '=': incompatible types - from 'vec *' to 'nbody *'
+C:\Users\yingji\Desktop\com4521_assignment-master_1\NBody\NBody.c(139,15): warning C4778: 'fscanf' : unterminated format string '%*'
+C:\Users\yingji\Desktop\com4521_assignment-master_1\NBody\NBody.c(144,66): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\yingji\Desktop\com4521_assignment-master_1\NBody\NBody.c(147,50): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\yingji\Desktop\com4521_assignment-master_1\NBody\NBody.c(165,49): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\yingji\Desktop\com4521_assignment-master_1\NBody\NBody.c(166,49): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\yingji\Desktop\com4521_assignment-master_1\NBody\NBody.c(169,33): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\yingji\Desktop\com4521_assignment-master_1\NBody\NBody.c(130,7): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\yingji\Desktop\com4521_assignment-master_1\NBody\NBody.c(137,17): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\yingji\Desktop\com4521_assignment-master_1\NBody\NBody.c(139,5): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\yingji\Desktop\com4521_assignment-master_1\NBody\NBody.c(199,1): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\yingji\Desktop\com4521_assignment-master_1\NBody\NBody.c(247,103): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\yingji\Desktop\com4521_assignment-master_1\NBody\NBody.c(248,103): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\yingji\Desktop\com4521_assignment-master_1\NBody\NBody.c(246,1): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\yingji\Desktop\com4521_assignment-master_1\NBody\NBody.c(293,27): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\yingji\Desktop\com4521_assignment-master_1\NBody\NBody.c(294,28): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\yingji\Desktop\com4521_assignment-master_1\NBody\NBody.c(295,26): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\yingji\Desktop\com4521_assignment-master_1\NBody\NBody.c(296,29): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\yingji\Desktop\com4521_assignment-master_1\NBody\NBody.c(298,20): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\yingji\Desktop\com4521_assignment-master_1\NBody\NBody.c(290,1): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\yingji\Desktop\com4521_assignment-master_1\NBody\NBody.c(291,1): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\yingji\Desktop\com4521_assignment-master_1\NBody\NBody.c(309,1): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\yingji\Desktop\com4521_assignment-master_1\NBody\NBody.c(310,1): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\yingji\Desktop\com4521_assignment-master_1\NBody\NBody.c(336,27): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\yingji\Desktop\com4521_assignment-master_1\NBody\NBody.c(337,28): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\yingji\Desktop\com4521_assignment-master_1\NBody\NBody.c(338,26): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\yingji\Desktop\com4521_assignment-master_1\NBody\NBody.c(339,29): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\yingji\Desktop\com4521_assignment-master_1\NBody\NBody.c(341,20): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\yingji\Desktop\com4521_assignment-master_1\NBody\NBody.c(333,1): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\yingji\Desktop\com4521_assignment-master_1\NBody\NBody.c(334,1): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\yingji\Desktop\com4521_assignment-master_1\NBody\NBody.c(353,1): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\yingji\Desktop\com4521_assignment-master_1\NBody\NBody.c(354,1): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\yingji\Desktop\com4521_assignment-master_1\NBody\NBody.c(385,103): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\yingji\Desktop\com4521_assignment-master_1\NBody\NBody.c(386,103): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\yingji\Desktop\com4521_assignment-master_1\NBody\NBody.c(384,1): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  NBodyVisualiser.c
+  NBody.vcxproj -> C:\Users\yingji\Desktop\com4521_assignment-master_1\Debug\NBody.exe

@@ -14,11 +14,11 @@ void print_help();
 
 // serial.
 void step(void);
-void acti_map_func(float *acti_map);
+void acti_map_func();
 
 // openMP
 void openMP_step(void);
-void openMP_acti_map_func(float *acti_map);
+void openMP_acti_map_func();
 
 // N, D, M and I.
 int num; 
@@ -28,7 +28,7 @@ int iter = 1;
 
 // pointer: acti_map: density, body_pointer: struct body.
 nbody *body_pointer; 
-const float *acti_map;
+float *acti_map;
 
 // those variables are for calculating the boundary.
 float max_x = 0.0;
@@ -276,10 +276,10 @@ void step(void) {
 				min_y = body_pointer[i].y;
 			}
 		}
-		acti_map_func(acti_map);
+		acti_map_func();
 	}
 }
-void acti_map_func(float *acti_map) {
+void acti_map_func() {
 	// initialize.
 	for (int i = 0; i < (grid*grid); i++) {
 		acti_map[i] = 0.0f;
@@ -287,8 +287,8 @@ void acti_map_func(float *acti_map) {
 	// first iteration useful.
 	if (cond1) {
 		// get the center of N-body.
-		float cen_x = (max_x - min_x) / 2.0;
-		float cen_y = (max_y - min_y) / 2.0;
+		float cen_x = (max_x - min_x) / 2.0f;
+		float cen_y = (max_y - min_y) / 2.0f;
 		// spread the boundary according to center. eg. center +- 300.
 		left_bound = cen_x - 1.0;
 		right_bound = cen_x + 1.0;
@@ -320,7 +320,7 @@ void acti_map_func(float *acti_map) {
 }
 
 // openMP function.
-void openMP_acti_map_func(float *acti_map) {
+void openMP_acti_map_func() {
 	// initialize.
 	int i;
 	#pragma omp parallel for 
@@ -414,7 +414,7 @@ void openMP_step(void) {
 				min_y = body_pointer[i].y;
 			}
 		}
-		acti_map_func(acti_map);
+		acti_map_func();
 	}
 }
 
