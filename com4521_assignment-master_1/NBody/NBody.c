@@ -139,13 +139,14 @@ int main(int argc, char *argv[]) {
 		char str[30];
 		int index = 0;
 		while (fgets(str, 30, f) != NULL) {
+			printf("%s \n", str);
 			if (str[0] == '#') { 
 				continue; 
 			}
 			else {
-				if (k > num) {
-					fprintf(stderr, "Error: num is less than number of bodies in file. \n");
-					error_func();
+				if (k == num) {
+					//fprintf(stderr, "Error: num is less than number of bodies in file. \n");
+					//error_func();
 				}
 				char* ptr;
 				char* tok;
@@ -177,10 +178,6 @@ int main(int argc, char *argv[]) {
 			}
 		}
 		fclose(f);
-		if (k+1 != num) {
-			fprintf(stderr, "Error: num is not the same. \n");
-			error_func();
-		}
 	}
 	else {
 		for (int j = 0; j < num; j++) {
