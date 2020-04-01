@@ -134,6 +134,23 @@ int main(int argc, char *argv[]) {
 		}
 		int len;
 		// read format data from file.
+		char str[30];
+		while (fgets(str, 30, f) != NULL) {
+			if (str[0] == '#') { 
+				continue; 
+			}
+			else {
+				float buf;
+				sscanf(str, "%f", buf);
+				for (int i = 0; i < 30; i++) {
+					if (str[i]) 
+				}
+				printf("%s \n", str);
+			}
+		}
+		fclose(f);
+		exit(1);
+		/*
 		while ((len = fscanf(f, "%f, %f, %f, %f, %f", &body_pointer[k].x, &body_pointer[k].y, &body_pointer[k].vx, &body_pointer[k].vy, &body_pointer[k].m)) != EOF) {
 			if (len == 0) {
 				fscanf(f, "%*[^\n]%*"); // skip a comment line.
@@ -158,7 +175,7 @@ int main(int argc, char *argv[]) {
 			free(acti_map);
 			exit(1);
 		}
-		fclose(f);
+		*/
 	}
 	else {
 		for (int j = 0; j < num; j++) {
@@ -199,30 +216,14 @@ int main(int argc, char *argv[]) {
 		int millisecond = 1000 * (elapsed - second);
 		printf("Execution time %d seconds %d milliseconds. \n", second, millisecond);
 	}
-
-	printf("Do you want to output the body position (using b) or heap map (using d) or (any other key to exit): ");
-	char c;
-	while ((c = getchar()) != 'n') {
-		if (c == 'b') {
-			for (int i = 0; i < num; i++) {
-				printf("this is body %d \n", i + 1);
-				printf("%f \n", body_pointer[i].x);
-				printf("%f \n", body_pointer[i].y);
-				printf("%f \n", body_pointer[i].vx);
-				printf("%f \n", body_pointer[i].vy);
-				printf("%f \n", body_pointer[i].m);
-			}
-		}
-		else if (c == 'd') {
-			for (int i = 0; i < grid*grid; i++) {
-				printf("the %d index, value : %.4f . \n", i, acti_map[i]); 
-			}
-		}
-		else {
-			break;
-		}
+	for (int i = 0; i < num; i++) {
+		printf("this is body %d \n", i + 1);
+		printf("%f \n", body_pointer[i].x);
+		printf("%f \n", body_pointer[i].y);
+		printf("%f \n", body_pointer[i].vx);
+		printf("%f \n", body_pointer[i].vy);
+		printf("%f \n", body_pointer[i].m);
 	}
-
 	free(body_pointer);
 	free(acti_map);
 	return 0;
@@ -243,9 +244,9 @@ void step(void) {
 			for (j = 0; j < num; j++) {
 				float dis_x = body_pointer[j].x - body_pointer[i].x;
 				float dis_y = body_pointer[j].y - body_pointer[i].y;
-				float magnitude = sqrt(dis_x*dis_x + dis_y * dis_y);
-				force_x += (G * body_pointer[i].m*body_pointer[j].m*dis_x) / pow((magnitude + SOFTENING), 3.0 / 2);
-				force_y += (G * body_pointer[i].m*body_pointer[j].m*dis_y) / pow((magnitude + SOFTENING), 3.0 / 2);
+				float magnitude = sqrt((double) dis_x*dis_x + (double) dis_y*dis_y);
+				force_x += (G * body_pointer[i].m*body_pointer[j].m*dis_x) / (float) pow(((double) magnitude + (double) SOFTENING), 3.0 / 2);
+				force_y += (G * body_pointer[i].m*body_pointer[j].m*dis_y) / (float) pow(((double) magnitude + (double) SOFTENING), 3.0 / 2);
 			}
 			float acc_x = force_x / body_pointer[i].m;
 			float acc_y = force_y / body_pointer[i].m;
@@ -289,13 +290,13 @@ void acti_map_func() {
 		// get the center of N-body.
 		float cen_x = (max_x - min_x) / 2.0f;
 		float cen_y = (max_y - min_y) / 2.0f;
-		// spread the boundary according to center. eg. center +- 300.
-		left_bound = cen_x - 1.0;
-		right_bound = cen_x + 1.0;
-		top_bound = cen_y + 1.0;
-		bottom_bound = cen_y - 1.0;
+		// spread the boundary according to center. eg. center +- 0.5.
+		left_bound = cen_x - 0.5;
+		right_bound = cen_x + 0.5;
+		top_bound = cen_y + 0.5;
+		bottom_bound = cen_y - 0.5;
 		// split square into grid.
-		unit = 2.0 / grid;
+		unit = 1.0f / grid;
 		cond1 = FALSE;
 	}
 
@@ -315,7 +316,7 @@ void acti_map_func() {
 	}
 	// normalize density.
 	for (int i = 0; i < (grid*grid); i++) {
-		acti_map[i] = acti_map[i] / num;
+		acti_map[i] = acti_map[i] / num * 10.0f;
 	}
 }
 
@@ -330,8 +331,8 @@ void openMP_acti_map_func() {
 	// first iteration useful.
 	if (cond1) {
 		// get the center of N-body.
-		float cen_x = (max_x - min_x) / 2.0;
-		float cen_y = (max_y - min_y) / 2.0;
+		float cen_x = (max_x - min_x) / 2.0f;
+		float cen_y = (max_y - min_y) / 2.0f;
 		// spread the boundary according to center. eg. center +- 300.
 		left_bound = cen_x - 1.0;
 		right_bound = cen_x + 1.0;
@@ -361,7 +362,7 @@ void openMP_acti_map_func() {
 	int k;
 	#pragma omp parallel for
 	for (k = 0; k < (grid*grid); k++) {
-		acti_map[k] = acti_map[k] / num;
+		acti_map[k] = acti_map[k] / num * 10.0f;
 	}
 }
 void openMP_step(void) {
@@ -381,9 +382,9 @@ void openMP_step(void) {
 			for (j = 0; j < num; j++) {
 				float dis_x = body_pointer[j].x - body_pointer[i].x;
 				float dis_y = body_pointer[j].y - body_pointer[i].y;
-				float magnitude = sqrt(dis_x*dis_x + dis_y * dis_y);
-				force_x += (G * body_pointer[i].m*body_pointer[j].m*dis_x) / pow((magnitude + SOFTENING), 3.0 / 2);
-				force_y += (G * body_pointer[i].m*body_pointer[j].m*dis_y) / pow((magnitude + SOFTENING), 3.0 / 2);
+				float magnitude = sqrt((double) dis_x*dis_x + (double) dis_y*dis_y);
+				force_x += (G * body_pointer[i].m*body_pointer[j].m*dis_x) / (float) pow(((double) magnitude + (double) SOFTENING), 3.0 / 2);
+				force_y += (G * body_pointer[i].m*body_pointer[j].m*dis_y) / (float) pow(((double) magnitude + (double) SOFTENING), 3.0 / 2);
 			}
 			float acc_x = force_x / body_pointer[i].m;
 			float acc_y = force_y / body_pointer[i].m;
@@ -428,3 +429,30 @@ void print_help(){
 	printf("\t[-i I]           Optionally specifies the number of simulation iterations 'I' to perform. Specifying no value will use visualisation mode. \n");
 	printf("\t[-f input_file]  Optionally specifies an input file with an initial N bodies of data. If not specified random data will be created.\n");
 }
+
+
+/*
+	printf("Do you want to output the body position (using b) or heap map (using d) or (any other key to exit): ");
+
+	char c;
+	while ((c = getchar()) != 'n') {
+		if (c == 'b') {
+			for (int i = 0; i < num; i++) {
+				printf("this is body %d \n", i + 1);
+				printf("%f \n", body_pointer[i].x);
+				printf("%f \n", body_pointer[i].y);
+				printf("%f \n", body_pointer[i].vx);
+				printf("%f \n", body_pointer[i].vy);
+				printf("%f \n", body_pointer[i].m);
+			}
+		}
+		else if (c == 'd') {
+			for (int i = 0; i < grid*grid; i++) {
+				printf("the %d index, value : %.4f . \n", i, acti_map[i]);
+			}
+		}
+		else {
+			break;
+		}
+	}
+	*/

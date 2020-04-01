@@ -1,10 +1,7 @@
-# NBody simulation file
-# demonstration of single large central mass with 2 satellite bodies
-# format is:
-# float x, float y, float vx, float vy, float mass
+# NBody simulation file1
 0.5f, 0.5f, 0.0f, 0.0f, 0.1
-# example of missing information (should contain the correct number of commas
+# NBody simulation file2
 0.234f, 0.567f, , ,
-# another example of missing information
+# NBody simulation file3
 0.987f, 0.765f,,,
 
