@@ -12,10 +12,13 @@
 
 void print_help();
 
+//strsep
+char* strsep(char** stringp, const char* delim);
+// errpr
+void error_func();
 // serial.
 void step(void);
 void acti_map_func();
-
 // openMP
 void openMP_step(void);
 void openMP_acti_map_func();
@@ -57,7 +60,7 @@ int main(int argc, char *argv[]) {
 			exit(1);
 		}
 		else {
-			fprintf(stderr, "Error command. \n");
+			fprintf(stderr, "Error command (using -help). \n");
 			exit(1);
 		}
 	}
@@ -80,13 +83,14 @@ int main(int argc, char *argv[]) {
 	acti_map = (float *)malloc(sizeof(float)*(grid * grid));
 	// Can't not initialize float array using memset() !!!
 	
-	// -i & -f. whether command has -i -f.
+	// -i & -f. whether command has -i -f. 
+	// from now on, body_pointer and acti_map should be free when error happened.
 	for (int i = 0; i < argc; i++) {
 		// -f.
 		if (strcmp(argv[i], "-f") == 0) {
 			if (i == argc - 1) {
 				fprintf(stderr, "can't use -f without file_name.");
-				exit(1);
+				error_func();
 			}
 			if (argv[i + 1]!=NULL) {
 				cond_arg_f = TRUE;
@@ -100,19 +104,19 @@ int main(int argc, char *argv[]) {
 		if (strcmp(argv[i], "-i") == 0) {
 			if (i == argc - 1) {
 				fprintf(stderr, "Error: can't use -i without I.");
-				exit(1);
+				error_func();
 			}
 			if (atoi(argv[i + 1])) {
 				if (atoi(argv[i + 1]) < 0) {
 					fprintf(stderr, "Error: I must be positive int.");
-					exit(1);
+					error_func();
 				}
 				cond_arg_i = TRUE;
 				index_arg_i = i + 1;
 			}
 			else {
-				fprintf(stderr, "Error: can't use -i without I.");
-				exit(1);
+				fprintf(stderr, "Error command (using -help). \n");
+				error_func();
 			}
 		}
 	}
@@ -123,59 +127,60 @@ int main(int argc, char *argv[]) {
 	else {
 		// visualiser.
 		toggle = TRUE;
-		printf("Running visualiser. \n");
 	}
 	// read file.
 	if (cond_arg_f) {
 		f = fopen(argv[index_arg_f], "r");
 		if (f == NULL) {
 			fprintf(stderr, "Error: don't find file! \n");
-			exit(1);
+			error_func();
 		}
-		int len;
 		// read format data from file.
 		char str[30];
+		int index = 0;
 		while (fgets(str, 30, f) != NULL) {
 			if (str[0] == '#') { 
 				continue; 
 			}
 			else {
-				float buf;
-				sscanf(str, "%f", buf);
-				for (int i = 0; i < 30; i++) {
-					if (str[i]) 
+				if (k > num) {
+					fprintf(stderr, "Error: num is less than number of bodies in file. \n");
+					error_func();
 				}
-				printf("%s \n", str);
+				char* ptr;
+				char* tok;
+				ptr = str;
+				int index = 0;
+				while ((tok = strsep(&ptr, ",")) != NULL) {
+					if (strlen(tok) > 1) {
+						// read from file.
+						if (index == 0) body_pointer[k].x = atof(tok);
+						else if (index == 1) body_pointer[k].y = atof(tok);
+						else if (index == 2) body_pointer[k].vx = atof(tok);
+						else if (index == 3) body_pointer[k].vy = atof(tok);
+						else if (index == 4) body_pointer[k].m = atof(tok);
+						else fprintf(stderr, "Error: less than 5. \n");
+					}
+					else {
+						// random.
+						if (index == 0) body_pointer[k].x = rand() / (RAND_MAX + 1.0);
+						else if (index == 1) body_pointer[k].y = rand() / (RAND_MAX + 1.0);
+						else if (index == 2) body_pointer[k].vx = 0.0f;
+						else if (index == 3) body_pointer[k].vy = 0.0f;
+						else if (index == 4) body_pointer[k].m = 1.0f / num;
+						else fprintf(stderr, "Error: less than 5. \n");
+					}
+					index++;
+				}
+				k++;
+				index = 0;
 			}
 		}
 		fclose(f);
-		exit(1);
-		/*
-		while ((len = fscanf(f, "%f, %f, %f, %f, %f", &body_pointer[k].x, &body_pointer[k].y, &body_pointer[k].vx, &body_pointer[k].vy, &body_pointer[k].m)) != EOF) {
-			if (len == 0) {
-				fscanf(f, "%*[^\n]%*"); // skip a comment line.
-				continue;
-			}
-			// fill with default value.
-			if ((len != 5) && (len != 0)) {
-				if (len == 1) { body_pointer[k].y = rand() / (RAND_MAX + 1.0); len++; }
-				if (len == 2) { body_pointer[k].vx = 0; len++; }
-				if (len == 3) { body_pointer[k].vy = 0; len++; }
-				if (len == 4) { body_pointer[k].m = 1.0 / num; len++; }
-			}
-			k++;
-			if (k > num) {
-				fprintf(stderr, "Error: num should bigger than amount of nbody in file.");
-				exit(1);
-			}
+		if (k+1 != num) {
+			fprintf(stderr, "Error: num is not the same. \n");
+			error_func();
 		}
-		if (k != num) {
-			fprintf(stderr, "Error: nbodies are not the same. \n");
-			free(body_pointer);
-			free(acti_map);
-			exit(1);
-		}
-		*/
 	}
 	else {
 		for (int j = 0; j < num; j++) {
@@ -215,14 +220,6 @@ int main(int argc, char *argv[]) {
 		int second = (int)elapsed;
 		int millisecond = 1000 * (elapsed - second);
 		printf("Execution time %d seconds %d milliseconds. \n", second, millisecond);
-	}
-	for (int i = 0; i < num; i++) {
-		printf("this is body %d \n", i + 1);
-		printf("%f \n", body_pointer[i].x);
-		printf("%f \n", body_pointer[i].y);
-		printf("%f \n", body_pointer[i].vx);
-		printf("%f \n", body_pointer[i].vy);
-		printf("%f \n", body_pointer[i].m);
 	}
 	free(body_pointer);
 	free(acti_map);
@@ -323,9 +320,7 @@ void acti_map_func() {
 // openMP function.
 void openMP_acti_map_func() {
 	// initialize.
-	int i;
-	#pragma omp parallel for 
-	for (i = 0; i < (grid*grid); i++) {
+	for (int i = 0; i < (grid*grid); i++) {
 		acti_map[i] = 0.0f;
 	}
 	// first iteration useful.
@@ -359,9 +354,7 @@ void openMP_acti_map_func() {
 		}
 	}
 	// normalize density.
-	int k;
-	#pragma omp parallel for
-	for (k = 0; k < (grid*grid); k++) {
+	for (int k = 0; k < (grid*grid); k++) {
 		acti_map[k] = acti_map[k] / num * 10.0f;
 	}
 }
@@ -430,7 +423,35 @@ void print_help(){
 	printf("\t[-f input_file]  Optionally specifies an input file with an initial N bodies of data. If not specified random data will be created.\n");
 }
 
+void error_func() {
+	free(body_pointer);
+	free(acti_map);
+	exit(1);
+}
+char* strsep(char** stringp, const char* delim) {
+	char* s;
+	const char* spanp;
+	int c, sc;
+	char* tok;
 
+	if ((s = *stringp) == NULL)
+		return (NULL);
+	for (tok = s;;) {
+		c = *s++;
+		spanp = delim;
+		do {
+			if ((sc = *spanp++) == c) {
+				if (c == 0)
+					s = NULL;
+				else
+					s[-1] = 0;
+				*stringp = s;
+				return (tok);
+			}
+		} while (sc != 0);
+	}
+	/* NOTREACHED */
+}
 /*
 	printf("Do you want to output the body position (using b) or heap map (using d) or (any other key to exit): ");
 
@@ -456,3 +477,30 @@ void print_help(){
 		}
 	}
 	*/
+
+	/*
+			while ((len = fscanf(f, "%f, %f, %f, %f, %f", &body_pointer[k].x, &body_pointer[k].y, &body_pointer[k].vx, &body_pointer[k].vy, &body_pointer[k].m)) != EOF) {
+				if (len == 0) {
+					fscanf(f, "%*[^\n]%*"); // skip a comment line.
+					continue;
+				}
+				// fill with default value.
+				if ((len != 5) && (len != 0)) {
+					if (len == 1) { body_pointer[k].y = rand() / (RAND_MAX + 1.0); len++; }
+					if (len == 2) { body_pointer[k].vx = 0; len++; }
+					if (len == 3) { body_pointer[k].vy = 0; len++; }
+					if (len == 4) { body_pointer[k].m = 1.0 / num; len++; }
+				}
+				k++;
+				if (k > num) {
+					fprintf(stderr, "Error: num should bigger than amount of nbody in file.");
+					exit(1);
+				}
+			}
+			if (k != num) {
+				fprintf(stderr, "Error: nbodies are not the same. \n");
+				free(body_pointer);
+				free(acti_map);
+				exit(1);
+			}
+			*/
