@@ -1,3 +1,4 @@
 # Data-Analytics
-ML &amp; NLP
-<img src="information.jpg" width="400" height="400">
+
+
+<img src="information.JPG" width="800" height="800">
