@@ -1,0 +1,9 @@
+# NBody simulation file1
+0.5f, 0.5f, 0.0f, 0.0f, 0.1
+# NBody simulation file2
+0.234f, 0.567f, , ,
+
+# NBody simulation file3
+0.987f, 0.765f,,,
+0.984f,,,0.1f, 0.2f
+,,,0.1f, 0.2f
