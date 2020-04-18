@@ -1,4 +1,20 @@
 # Data-Analytics
 
 
-<img src="information.JPG" width="800" height="800">
+### ml:
+
+* term1_assignment1: 
+* term1_assignment2:
+* term2_assignment1: 
+* term2_assignment2:
+
+### nlp:
+
+* assignment1: text classification (LR)
+* assignment2: NN (forward, backward)
+
+### cuda:
+
+* assignment1: N-body system (openMP & openGL)
+
+
