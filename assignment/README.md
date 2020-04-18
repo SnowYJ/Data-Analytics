@@ -3,18 +3,18 @@
 
 ### ml:
 
-* term1_assignment1: 
-* term1_assignment2:
-* term2_assignment1: 
-* term2_assignment2:
+* term1 assignment 1: 
+* term1 assignment 2:
+* term2 assignment 1: 
+* term2 assignment 2:
 
 ### nlp:
 
-* assignment1: text classification (LR)
-* assignment2: NN (forward, backward)
+* assignment 1: text classification (LR)
+* assignment 2: NN (forward, backward)
 
 ### cuda:
 
-* assignment1: N-body system (openMP & openGL)
+* assignment 1: N-body system (openMP & openGL)
 
 
