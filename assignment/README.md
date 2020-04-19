@@ -15,6 +15,7 @@
 
 ### cuda:
 
-* assignment 1: N-body system (openMP & openGL)
+* assignment 1: N-body system CPU openMP
+* assignment 2: N-body system GPU CUDA
 
 
