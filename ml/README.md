@@ -16,6 +16,6 @@
 * term2_week3: 协同过滤，Kaggle(santander-product-recommendation)。
 * term2_week4: k-means，k-means++，k-means||，RFM分析。
 * term2_week5: 主成成分分析，Kaggle(HR Analysis)。
-* term2_week6: 决策树（sklearn, pySpark, graphviz）
-
+* term2_week6: 决策树1（ID3，sklearn，pySpark，graphviz）
+* term2_week7: 决策树2（基尼指数，信息增益率，方差，过拟合-剪枝，模型集成）
 to be continue...
