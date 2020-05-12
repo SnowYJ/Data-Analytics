@@ -18,5 +18,6 @@
 * term2_week5: 主成成分分析，Kaggle(HR Analysis)。
 * term2_week6: 决策树1（ID3，sklearn，pySpark，graphviz）。
 * term2_week7: 决策树2（4种度量，过拟合-剪枝，模型集成-bagging & boosting）。
+* term2_week8: 逻辑回归（logistic loss，交叉熵，优化算法（牛顿法，拟牛顿法，BFGS，L-BFGS））
 
 to be continue...
