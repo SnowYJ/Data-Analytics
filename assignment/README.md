@@ -3,10 +3,10 @@
 
 ### ml:
 
-* term1 assignment 1: 
-* term1 assignment 2:
-* term2 assignment 1: 
-* term2 assignment 2:
+* term1 assignment 1: ridge regression
+* term1 assignment 2: 
+* term2 assignment 1: analysis of access_log_Jul95 and movie dataset by Spark
+* term2 assignment 2: analysis of HIGGS and ClaimPredictionChallenge dataset by Spark
 
 ### nlp:
 
