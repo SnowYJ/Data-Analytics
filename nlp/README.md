@@ -14,3 +14,5 @@
 * week5: transition-based & graph-based dependency parsing 
 * week6: 前馈神经网络，前向传播与反向传播，word2vec skip-gram 与 CBOW模型以及两种优化方法（负采样，哈夫曼树）
 * week7: 递归神经网络RNN，双向RNN，LSTM，GRU，LSTM+Attention
+* week8: Seq2Seq - 机器翻译
+* week9: 迁移学习
